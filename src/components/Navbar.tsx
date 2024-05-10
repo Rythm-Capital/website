@@ -170,7 +170,7 @@ export default function Navbar() {
 			)}
 
 			<nav id="navbar" className="fixed top-0 z-50 flex h-16 w-full items-center justify-between ">
-				<div className="relative z-10 flex w-auto items-center pl-6 lg:pl-24">
+				<div className="relative z-10 flex w-auto items-center pl-4 lg:pl-24">
 					<a href="/" className="flex items-center gap-2" onClick={closeNav}>
 						<div className="flex h-8 w-8 items-center">{getIcon('logo')}</div>
 						<div className="heading-text text-xl">RTHMN</div>
@@ -182,15 +182,15 @@ export default function Navbar() {
 					<a href="/"> Tools </a>
 					<a href="/"> Company </a>
 				</div>
-				<div className="flex flex-row  gap-4 p-0 lg:pr-24">
-					<div className="primary-text border border-gray-500 px-2 py-1 pt-[.4em] font-bold">
+				<div className="flex flex-row gap-2 p-4 md:gap-4 lg:pr-24">
+					<div className="primary-text  border border-gray-500 px-2 py-1 pt-[.4em] font-bold">
 						LOGIN
 					</div>
-					<div className="rounded-full border border-gray-500 bg-gradient-to-r from-[#7886FF] to-[#CBFFFF] px-3 py-1  font-bold text-black text-white">
+					<div className="rounded-full border border-gray-500 bg-gradient-to-r from-[#7886FF] to-[#CBFFFF] px-3 py-1 font-bold  text-black text-white md:block">
 						SIGNUP
 					</div>
 				</div>
-				<div className="relative block pr-6 lg:hidden ">
+				{/* <div className="relative block pr-6 lg:hidden ">
 					<button
 						id="nav-toggle"
 						className="relative z-20 flex h-10  w-10 items-center  justify-center "
@@ -200,7 +200,7 @@ export default function Navbar() {
 					>
 						{getIcon('menu')}
 					</button>
-				</div>
+				</div> */}
 
 				<div
 					id="nav-content"
