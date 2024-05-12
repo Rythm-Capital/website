@@ -4,7 +4,9 @@ dist/
 # generated types
 .astro/
 .vscode/extensions.json
-
+.vercel/
+.github/
+.prettierrc
 
 # dependencies
 node_modules/
@@ -18,6 +20,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.local
 
 # macOS-specific files
 .DS_Store

@@ -1,0 +1,50 @@
+---
+import { MainPost } from '../components/MainPost';
+import Layout from '../layouts/Layout.astro';
+
+import { sanityClient } from 'sanity:client';
+
+const posts = await sanityClient.fetch(
+  `*[_type == "post" && defined(publishedAt)] | order(publishedAt desc)
+    {
+    title,
+    category,
+    excerpt,
+    slug,
+     block[]{
+       ...,
+       heading,
+       subheading,
+       layout,
+       title,
+       publicationDate,
+        "imageRef": {
+              ...,
+            "imageUrl": imageRef->image.asset->url,
+            "imageAlt": imageRef->alt,
+        },
+      
+      team->{
+       ...,
+       name,
+       role,
+       image,
+       shortBio,
+     },
+    }}`,
+);
+
+interface Post {
+  // Define the properties of a post here
+  id: number;
+  title: string;
+  content: string;
+  // Add more properties as needed
+}
+---
+
+<Layout title='Welcome to Astro.'>
+  <section>
+    {posts.length ? posts.map((post: Post) => <MainPost post={post} />) : null}
+  </section>
+</Layout>
