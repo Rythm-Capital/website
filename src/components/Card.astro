@@ -1,61 +1,52 @@
 ---
+import type { PortableTextBlock } from '@portabletext/types';
+import type { ImageAsset, Slug } from '@sanity/types';
+import { getSanityImageURL } from '../lib/helpers.js';
+import { fade, slide } from 'astro:transitions';
+
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  post: Post;
+  block?: { imageRef?: { imageUrl?: string } };
 }
 
-const { href, title, body } = Astro.props;
+export interface Post {
+  _type: 'post';
+  _createdAt: string;
+  title?: string;
+  block: any;
+  slug: Slug;
+  excerpt?: string;
+  mainImage?: ImageAsset;
+  body: PortableTextBlock[];
+}
+
+const { post } = Astro.props as Props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
-</style>
+<div class='w-full text-white p-4 rounded-lg shadow-md'>
+  <div class='flex items-center flex-row flex-wrap justify-center mb-4'>
+    {
+      post.mainImage ? (
+        <img
+          class='w-[300px] h-full object-cover '
+          transition:animate={fade({ duration: '.5s' })}
+          src={getSanityImageURL(post.mainImage).url()}
+          alt='Cover image'
+        />
+      ) : (
+        <div class='w-20 h-20 bg-black border' />
+      )
+    }
+    <div class='ml-4'>
+      <h3 class='text-lg font-semibold'>
+        <a
+          class='text-white hover:underline'
+          href={`/posts/${post.slug.current}`}
+        >
+          {post.title}
+        </a>
+      </h3>
+      <p class='text-gray-300 mt-1'>{post.excerpt}</p>
+    </div>
+  </div>
+</div>
