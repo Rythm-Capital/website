@@ -73,7 +73,7 @@ const posts = await sanityClient.fetch(
         </button>
       </div>
     </div>
-    <section class=''>
+    <section class='hidden'>
       {posts.length ? posts.map((post: any) => <Card post={post} />) : null}
     </section>
   </main>

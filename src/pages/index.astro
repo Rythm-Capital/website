@@ -1,21 +1,19 @@
 ---
-import Card from '../components/Card.astro';
+import { MainPost } from '../components/MainPost';
 import Navbar from '../components/Navbar';
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
 
 const posts = await sanityClient.fetch(
-  `*[_type == "post" ] | order(publishedAt desc)
+  `*[_type == "posts" ] | order(publishedAt desc)
     {
 		...,
-    title,
-    category,
-    excerpt,
     slug,
      block[]{
        ...,
        heading,
        subheading,
+        category,
        layout,
        title,
        publicationDate,
@@ -34,6 +32,7 @@ const posts = await sanityClient.fetch(
      },
     }}`,
 );
+console.log(posts);
 ---
 
 <Layout title='Rthmn.'>
@@ -73,8 +72,8 @@ const posts = await sanityClient.fetch(
         </button>
       </div>
     </div>
-    <section class='hidden'>
-      {posts.length ? posts.map((post: any) => <Card post={post} />) : null}
+    <section class=''>
+      {posts.length ? posts.map((post: any) => <MainPost post={post} />) : null}
     </section>
   </main>
 </Layout>

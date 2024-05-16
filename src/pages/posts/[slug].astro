@@ -2,19 +2,68 @@
 import Layout from '../../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
 import type { Slug } from '@sanity/types';
-import { getSanityImageURL } from '../../lib/helpers.js';
-import { fade, slide } from 'astro:transitions';
+
+import Blocks from '../../components/blocks/Blocks';
+import { type BlockProps } from '../../components/blocks/types';
 
 export async function getStaticPaths() {
   const post = await sanityClient.fetch(
-    `*[_type == "post"] | order(_createdAt desc) {
-      _createdAt,
-      title,
-      slug,
-      excerpt,
-      mainImage,
-      body
-    }`,
+    `*[_type == "posts"] 
+     {
+		...,
+    slug,
+     block[]{
+         ...,
+        heading,
+        subheading,
+        tags,
+        category->,
+        layout,
+        publicationDate,
+        team->,
+            "imageRef": {
+              ...,
+            "imageUrl": imageRef->image.asset->url,
+            "imageAlt": imageRef->alt,
+        },
+
+        content[] {
+            ...,
+            image-> {
+                ...,
+                className->{name},
+                team->,
+            },
+
+            "videoRef": {
+              ...,
+                "videoTitle": video->title,
+                "videoFileUrl": video->video.asset->url,
+                "videoImage": video->image.asset->url,
+                "videoUrl": video->url,
+                "videoTeam": video->team,
+            },
+            
+            "audioRefData": {
+                "audioTitle": audio->title,
+                "audioFileUrl": audio->audioFile.asset->url
+            },
+            
+            "quoteRef": {
+                "quoteTitle": quote->quote,
+                "quoteAuthor": quote->author,
+                "quoteImage": quote->mediaRef.image->image,
+                "quoteLayout": quote->mediaRef.layout,
+
+            },
+
+            "postsRef": {
+                "postsHeading": posts->block[0].heading,
+                "postsSlug": posts->slug.current,
+                "postsImage": posts->block[0].imageRef->image.asset->url,
+            },
+        },
+    }}`,
   );
 
   return post.map((post: any) => ({
@@ -24,34 +73,18 @@ export async function getStaticPaths() {
 }
 
 const { post = {} as any } = Astro.props;
+
+const { block } = post;
+
+console.log('post slug', post);
 ---
 
 <Layout title='Rthmn.'>
-  <div class='w-full text-white shadow-md'>
-    <div class='flex flex-col p-8 items-center justify-center mb-4'>
-      {
-        post.mainImage ? (
-          <img
-            class='w-full h-full object-cover  '
-            transition:animate={fade({ duration: '.5s' })}
-            src={getSanityImageURL(post.mainImage).url()}
-            alt='Cover image'
-          />
-        ) : (
-          <div class='w-20 h-20 bg-gray-600 rounded-full' />
-        )
-      }
-      <div class='flex flex-col mt-8 w-1/2'>
-        <h3 class='text-3xl font-semibold'>
-          <a
-            class='text-white hover:underline'
-            href={`/posts/${post.slug.current}`}
-          >
-            {post.title}
-          </a>
-        </h3>
-        <p class='text-gray-300 mt-4'>{post.excerpt}</p>
-      </div>
-    </div>
-  </div>
+  <main>
+    {
+      block?.map((block: any) => (
+        <Blocks client:load block={block as BlockProps} />
+      ))
+    }
+  </main>
 </Layout>

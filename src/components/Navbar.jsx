@@ -1,37 +1,35 @@
 // import Spline from '@splinetool/react-spline'
 
-import { useState } from 'react'
+import { useState } from "react";
 
 export default function Navbar() {
-	const [isNavOpen, setIsNavOpen] = useState(false)
+	const [isNavOpen, setIsNavOpen] = useState(false);
 
 	const toggleNav = () => {
-		setIsNavOpen(!isNavOpen)
-		document.body.style.overflow = isNavOpen ? 'auto' : 'hidden'
-	}
+		setIsNavOpen(!isNavOpen);
+		document.body.style.overflow = isNavOpen ? "auto" : "hidden";
+	};
 	const closeNav = () => {
-		setIsNavOpen(false)
-		document.body.style.overflow = 'auto'
-	}
+		setIsNavOpen(false);
+		document.body.style.overflow = "auto";
+	};
 	const handleBackdropClick = () => {
-		closeNav()
-	}
+		closeNav();
+	};
 
 	const as = [
-		{ href: '/story', label: 'Story', icon: 'story' },
+		{ href: "/story", label: "Story", icon: "story" },
 		{
-			href: 'https://www.youtube.com/@realitydesigners',
-			label: 'Videos',
-			icon: 'video'
+			href: "https://www.youtube.com/@realitydesigners",
+			label: "Videos",
+			icon: "video",
 		},
-		{ href: '#', label: 'Library', icon: 'lock' },
-		{ href: '/lab', label: 'Lab', icon: 'video' },
-		{ href: '#', label: 'Contact', icon: 'lock' }
-	]
+		{ href: "#", label: "Library", icon: "lock" },
+		{ href: "/lab", label: "Lab", icon: "video" },
+		{ href: "#", label: "Contact", icon: "lock" },
+	];
 
-	type IconName = 'logo' | 'menu' | 'library' | 'lock' | 'story' | 'video'
-
-	const getIcon = (name: IconName) => {
+	const getIcon = (name) => {
 		const icons = {
 			logo: (
 				// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
@@ -42,11 +40,11 @@ export default function Navbar() {
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<g clip-path="url(#clip0_1208_27417)">
+					<g clipPath="url(#clip0_1208_27417)">
 						<path
 							d="M27.512 73.5372L27.512 28.512C27.512 27.9597 27.9597 27.512 28.512 27.512L70.4597 27.512C71.0229 27.512 71.475 27.9769 71.4593 28.54L70.8613 49.9176C70.8462 50.4588 70.4031 50.8896 69.8617 50.8896L50.7968 50.8896C49.891 50.8896 49.4519 51.9975 50.1117 52.618L92.25 92.25M92.25 92.25L48.2739 92.25L7.75002 92.25C7.19773 92.25 6.75002 91.8023 6.75002 91.25L6.75 7.75C6.75 7.19771 7.19772 6.75 7.75 6.75L91.25 6.75003C91.8023 6.75003 92.25 7.19775 92.25 7.75003L92.25 92.25Z"
 							stroke="url(#paint0_linear_1208_27417)"
-							stroke-width="9"
+							strokeWidth="9"
 						/>
 					</g>
 					<defs>
@@ -58,8 +56,8 @@ export default function Navbar() {
 							y2="92.25"
 							gradientUnits="userSpaceOnUse"
 						>
-							<stop stop-color="#EAEDF3" />
-							<stop offset="1" stop-color="#CBD3E7" />
+							<stop stopColor="#EAEDF3" />
+							<stop offset="1" stopColor="#CBD3E7" />
 						</linearGradient>
 						<clipPath id="clip0_1208_27417">
 							<rect width="100" height="100" fill="white" />
@@ -80,14 +78,18 @@ export default function Navbar() {
 						strokeLinecap="round"
 						strokeLinejoin="round"
 						strokeWidth={2}
-						d={isNavOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+						d={isNavOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
 					/>
 				</svg>
 			),
 			library: (
 				// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M4 3H20V21H4V3ZM6 5V19H18V5H6Z" stroke="currentColor" strokeWidth="2" />
+					<path
+						d="M4 3H20V21H4V3ZM6 5V19H18V5H6Z"
+						stroke="currentColor"
+						strokeWidth="2"
+					/>
 					<path d="M9 7H15" stroke="currentColor" strokeWidth="2" />
 					<path d="M9 11H15" stroke="currentColor" strokeWidth="2" />
 					<path d="M9 15H15" stroke="currentColor" strokeWidth="2" />
@@ -154,10 +156,10 @@ export default function Navbar() {
 					<path d="M14 15V3" stroke="#999" strokeWidth="2" />
 					<path d="M6 13L6 1" stroke="#999" strokeWidth="2" />
 				</svg>
-			)
-		}
-		return icons[name] || <path />
-	}
+			),
+		};
+		return icons[name] || <path />;
+	};
 
 	return (
 		<>
@@ -169,10 +171,14 @@ export default function Navbar() {
 				/>
 			)}
 
-			<nav id="navbar" className="fixed top-0 z-50 flex h-16 w-full items-center justify-between ">
+			<nav
+				id="navbar"
+				className="fixed top-0 z-50 flex h-16 w-full items-center justify-between "
+			>
 				<div className="relative z-10 flex w-auto items-center pl-4 lg:pl-24">
+					{/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
 					<a href="/" className="flex items-center gap-2" onClick={closeNav}>
-						<div className="flex h-8 w-8 items-center">{getIcon('logo')}</div>
+						<div className="flex h-8 w-8 items-center">{getIcon("logo")}</div>
 						<div className="heading-text text-xl">RTHMN</div>
 					</a>
 				</div>
@@ -206,7 +212,7 @@ export default function Navbar() {
 					id="nav-content"
 					role="menu"
 					className={`lg:duration-400 absolute right-0 top-0  h-screen w-full flex-col rounded-[0em] bg-black shadow-lg transition-transform duration-0 ease-in-out lg:mt-0  lg:h-[100vh] lg:w-full lg:rounded-[1em] lg:bg-black/80 lg:py-16 ${
-						isNavOpen ? 'translate-x-0 ' : 'translate-x-full '
+						isNavOpen ? "translate-x-0 " : "translate-x-full "
 					} flex h-screen w-full flex-col justify-start p-3`}
 				>
 					<div className="h-full overflow-y-auto lg:flex lg:justify-between">
@@ -219,5 +225,5 @@ export default function Navbar() {
 				</div>
 			</nav>
 		</>
-	)
+	);
 }
