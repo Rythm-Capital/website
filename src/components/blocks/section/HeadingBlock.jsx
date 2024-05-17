@@ -47,15 +47,15 @@ const TeamSection = ({ team, theme }) => {
 		<div className="w-full items-center py-4">
 			<a href={`/team/${team.slug.current}`}>
 				<div className=" flex h-auto w-full justify-center p-1">
-					{team.image && (
+					{team && (
 						<div className="flex w-full flex-row flex-wrap  items-center  ">
-							<img
+							{/* <img
 								src={team.image}
 								alt={`Team member for ${team.name}`}
 								className="h-[2em] w-[2em] max-w-[2em] max-h-[2em] object-cover cover rounded-lg"
-							/>
+							/> */}
 							<span className="ml-2 cursor-pointer bg-gradient-to-r from-blue-100/100  to-blue-100/90 bg-clip-text text-sm font-bold uppercase uppercase leading-none tracking-wide text-transparent ">
-								Written by {team.name}
+								Posted by {team.name}
 							</span>
 						</div>
 					)}
@@ -70,7 +70,6 @@ const HeadingBlock = ({ block }) => {
 
 	const theme = block.className;
 	const imageUrl = block.imageRef?.imageUrl;
-	const imageAlt = block.imageRef?.imageAlt;
 
 	switch (theme) {
 		case "dark":
@@ -92,12 +91,9 @@ const HeadingBlock = ({ block }) => {
 							/>
 						</div>
 
-						<div className="flex w-full flex-wrap p-2 lg:w-1/2">
+						<div className="pl-1 flex w-full flex-wrap p-2 lg:w-1/2">
 							<div className="h-full w-full object-contain object-cover">
 								<img src={imageUrl} alt={"this"} className="w-50 h-50" />
-								<p className=" flex  py-2 text-xs uppercase tracking-wide text-gray-400">
-									Image Of: {imageAlt}
-								</p>
 							</div>
 						</div>
 
@@ -118,7 +114,7 @@ const HeadingBlock = ({ block }) => {
 								<Heading
 									heading={block.heading}
 									className={
-										" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 bg-clip-text p-1 text-[10vw] font-bold uppercase leading-none text-transparent lg:text-[4vw]"
+										" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 bg-clip-text p-1 text-4xl font-semibold  leading-none text-transparent lg:text-5xl"
 									}
 								/>
 								<SubHeading
@@ -126,7 +122,7 @@ const HeadingBlock = ({ block }) => {
 									className="bg-gradient-to-r from-blue-100/80 to-blue-100/70 bg-clip-text p-1 text-xl leading-tight text-transparent"
 								/>
 								<div className="w-full ">
-									<TeamSection team={block.team} theme={className} />
+									<TeamSection team={block.team} />
 								</div>
 							</div>
 						</div>

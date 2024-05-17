@@ -8,7 +8,7 @@ import { type BlockProps } from '../../components/blocks/types';
 
 export async function getStaticPaths() {
   const post = await sanityClient.fetch(
-    `*[_type == "posts"] 
+    `*[_type == "posts"]
      {
 		...,
     slug,

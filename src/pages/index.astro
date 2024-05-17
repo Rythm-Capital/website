@@ -35,7 +35,6 @@ const posts = await sanityClient.fetch(
 ---
 
 <Layout title='Rthmn.'>
-  <Navbar client:load />
   <main>
     <div class='flex h-screen w-full flex-col items-center justify-center'>
       <h1
@@ -71,8 +70,8 @@ const posts = await sanityClient.fetch(
         </button>
       </div>
     </div>
-    <section class='hidden'>
+    <div class='w-full justify-center flex items-center p-4'>
       {posts.length ? posts.map((post: any) => <MainPost post={post} />) : null}
-    </section>
+    </div>
   </main>
 </Layout>

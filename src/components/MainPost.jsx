@@ -25,18 +25,17 @@ const SubHeading = ({ heading, className }) => {
 
 export const MainPostItem = ({ block, slug }) => {
 	const { publicationDate } = block;
-	console.log(slug);
 
 	const imageUrl = block.imageRef?.imageUrl;
 
 	return (
 		<div className="group flex h-auto flex-col border-gray-600/50 p-1 transition duration-300 ease-in-out">
-			<div className="overflow-hidden ">
-				<div className="transform transition duration-300 ease-in-out group-hover:scale-105">
+			<div className="overflow-hidden rounded-[.5em]">
+				<div className="transform transition duration-300 ease-in-out group-hover:scale-105 ">
 					<img
 						src={imageUrl}
 						alt={"this"}
-						className="-[.7em] h-[350px]  w-full object-contain object-cover  lg:h-[33vw]"
+						className=" h-full  w-full object-contain object-cover  lg:h-[25vw] rounded-[.5em]"
 					/>
 					{block.image && (
 						<div className="group mb-2 flex h-80 w-full overflow-hidden lg:h-96">
@@ -59,13 +58,13 @@ export const MainPostItem = ({ block, slug }) => {
 			<a href={`/posts/${slug?.current}`}>
 				<Heading
 					heading={block.heading}
-					className=" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 bg-clip-text p-1 text-5xl font-bold uppercase leading-none text-transparent lg:text-6xl"
+					className=" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 bg-clip-text p-1 text-3xl font-semibold   leading-[1.25em] text-transparent lg:text-4xl"
 				/>
 			</a>
 
 			<SubHeading
 				heading={block.subheading}
-				className="bg-gradient-to-r from-blue-100/50 to-blue-100/50  bg-clip-text p-1 text-xl leading-tight text-transparent"
+				className="bg-gradient-to-r from-blue-100/50 to-blue-100/50  bg-clip-text p-1 text-lg   leading-[1.5em] text-transparent"
 			/>
 		</div>
 	);
