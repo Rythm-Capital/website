@@ -1,0 +1,114 @@
+---
+const Company = [
+  { label: 'About us', href: '/about' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Become a partner', href: '/become-a-partner' },
+  { label: 'Trust', href: '/trust' },
+  { label: 'Become a partner', href: '/pricing' },
+];
+const Resources = [
+  { label: 'Blog', href: '/blog' },
+  { label: 'Docs', href: '/docs' },
+  { label: 'Changelog', href: '/changelog' },
+  { label: 'Support', href: '/early-access' },
+];
+const Legal = [
+  { label: 'Blog', href: '/privacy' },
+  { label: 'Changelog', href: '/terms-of-service' },
+  { label: 'Docs', href: '/cookies' },
+  { label: 'Security', href: '/security' },
+];
+---
+
+<div
+  class='mt-20 px-2 b md:px-4 lg:px-20 pt-8 w-full h-full md:justify-start sm:justify-between sm:flex-row flex-col flex flex-wrap'
+>
+  <div class='sm:w-1/4 w-auto h-full flex flex-col'>
+    <a
+      href='/'
+      class='p-4 w-full h-full flex flex-row justify-start items-center'
+    >
+      <img src='/favicon.png' class='w-10 h-10' />
+      <p class='heading-text text-2xl uppercase tracking wide pl-3'>Rthmn</p>
+    </a>
+    <div class='w-auto flex flex-col h-full'>
+      <p class='heading-text pb-4 md:pb-10 leading-[1.3em] text-sm pl-4'>
+        Trading From<br /> Another Dimension.
+      </p>
+
+      <div
+        class='w-[175px] ml-4 rounded-md justify-center flex bg-gray-600/25 flex-row px-2 py-1 items-center'
+      >
+        <span class='bg-teal-300 w-2 h-2 mr-2 rounded-full'></span>
+        <p class='primary-text tracking-wide pt-1 text-xs wide'>
+          All systems operational
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class='w-full md:flex-row sm:pl-20 md:pl-0 sm:w-3/4 h-full flex-row flex pt-12 flex-wrap sm:pt-4 md:pt-6'
+  >
+    <div class='w-full sm:w-1/2 md:w-1/4'>
+      <p
+        class='text-md pb-2 uppercase heading-text font-bold tracking wide pl-4'
+      >
+        Company
+      </p>
+      {
+        Company.map(link => (
+          <a
+            href={link.href}
+            class='px-4 py-2 text-sm flex primary-text  items-center'
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+    <div class='w-full sm:w-1/2 md:w-1/4'>
+      <p
+        class='text-md pb-2 uppercase heading-text font-bold tracking wide pl-4'
+      >
+        Resources
+      </p>
+      {
+        Resources.map((link, index) => (
+          <a
+            href={link.href}
+            class='px-4 py-2 text-sm flex primary-text  items-center'
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+    <div class='w-full pt-4 md:pt-0 md:w-1/4'>
+      <p
+        class='text-md pb-2 uppercase heading-text font-bold tracking wide pl-4'
+      >
+        Legal
+      </p>
+      {
+        Legal.map((link, index) => (
+          <a
+            href={link.href}
+            class='px-4 py-2 text-sm flex primary-text  items-center'
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+    <div
+      class='w-full md:flex hidden md:w-1/4 border border-gray-600/25 h-[200px] rounded-md'
+    >
+    </div>
+  </div>
+  <div class='w-full flex items-center justify-center py-8'>
+    <p class='text-gray-600/50 tracking-normal text-xs'>
+      Copyright Ⓒ 2022 – 2024 Rthmn, Inc.
+    </p>
+  </div>
+</div>
