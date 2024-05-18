@@ -44,9 +44,9 @@ const TeamSection = ({ team, theme }) => {
 	if (!team) return null;
 
 	return (
-		<div className="w-full items-center py-4">
+		<div className="w-full items-center py-8">
 			<a href={`/team/${team.slug.current}`}>
-				<div className=" flex h-auto w-full justify-center p-1">
+				<div className=" flex h-auto w-full justify-center">
 					{team && (
 						<div className="flex w-full flex-row flex-wrap  items-center  ">
 							{/* <img
@@ -91,9 +91,13 @@ const HeadingBlock = ({ block }) => {
 							/>
 						</div>
 
-						<div className="pl-1 flex w-full flex-wrap p-2 lg:w-1/2">
+						<div className=" flex w-full mb-2 md:mb-16 flex-wrap p-2 lg:w-1/2">
 							<div className="h-full w-full object-contain object-cover">
-								<img src={imageUrl} alt={"this"} className="w-50 h-50" />
+								<img
+									src={imageUrl}
+									alt={"this"}
+									className="lg:pl-16 p-0 w-full"
+								/>
 							</div>
 						</div>
 
@@ -114,7 +118,7 @@ const HeadingBlock = ({ block }) => {
 								<Heading
 									heading={block.heading}
 									className={
-										" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 bg-clip-text p-1 text-4xl font-semibold  leading-none text-transparent lg:text-5xl"
+										" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 mb-4 bg-clip-text p-1 text-4xl font-semibold  leading-none text-transparent lg:text-5xl"
 									}
 								/>
 								<SubHeading

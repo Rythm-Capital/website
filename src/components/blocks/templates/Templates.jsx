@@ -22,7 +22,7 @@ const listStyles = {
 };
 
 const normalTextStyles = {
-	dark: "w-full  bg-gradient-to-r from-blue-100/80 to-blue-100/70 text-transparent bg-clip-text leading-[1.4em] tracking-wide text-xl md:w-3/4 lg:w-1/2 lg:text-xl",
+	dark: "w-full  bg-gradient-to-r from-blue-100/80 to-blue-100/70 text-transparent bg-clip-text leading-[1.5em] lg:leading-[1.75em] tracking-wide text-xl md:w-3/4 lg:w-1/2 lg:text-lg ",
 	light:
 		"text-black leading-[1.5em] tracking-wide text-xl md:w-3/4 lg:w-1/2 lg:text-xl",
 };
