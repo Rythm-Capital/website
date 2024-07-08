@@ -3,6 +3,7 @@ import { MainPost } from '../components/MainPost';
 import Navbar from '../components/Navbar';
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
+import SplineScene from '../components/SplineScene'
 
 const posts = await sanityClient.fetch(
   `*[_type == "posts" ] | order(publishedAt desc)
@@ -37,10 +38,14 @@ const posts = await sanityClient.fetch(
 <Layout title='Rthmn.'>
   <main>
     <div class='flex h-screen w-full flex-col items-center justify-center'>
+      <div class="w-full h-screen absolute">
+         <SplineScene client:load/>
+      </div>
+      <div class="relative z-10 flex justify-center items-center flex-col">
       <h1
-        class='heading-text block flex w-auto text-balance text-center text-6xl leading-[.9em] tracking-wide md:text-8xl'
+        class='heading-text block flex w-auto text-balance text-center text-6xl leading-[.7em] uppercase tracking-wide md:text-8xl'
       >
-        Trading In<br />Another<br />Dimension
+        Trading<br />Gamified
       </h1>
       <div class='flex w-full flex-col items-center justify-center'>
         <h2
@@ -49,7 +54,10 @@ const posts = await sanityClient.fetch(
           The world’s first 3D pattern recognition tool designed to identify
           opportunities no one else sees.
         </h2>
-      </div>
+      </div> 
+    </div>
+
+
       <div
         class='relative flex h-16 flex-row items-center gap-2 pt-6 md:flex-row'
       >

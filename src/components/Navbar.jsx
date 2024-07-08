@@ -173,9 +173,9 @@ export default function Navbar() {
 
 			<nav
 				id="navbar"
-				className="fixed top-0 z-50 flex h-16 w-full items-center justify-between "
+				className="fixed top-0 z-50 flex h-16 w-full items-center justify-between px-4 lg:px-8 "
 			>
-				<div className="relative z-10 flex w-auto items-center pl-4 lg:pl-24">
+				<div className="relative z-10 flex w-auto items-center ">
 					{/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
 					<a href="/" className="flex items-center gap-2" onClick={closeNav}>
 						<div className="flex h-8 w-8 items-center">{getIcon("logo")}</div>
@@ -188,7 +188,7 @@ export default function Navbar() {
 					<a href="/"> Tools </a>
 					<a href="/"> Company </a>
 				</div>
-				<div className="flex flex-row gap-2 p-4 md:gap-4 lg:pr-24">
+				<div className="flex flex-row gap-2  md:gap-4 ">
 					<div className="primary-text  border border-gray-500 px-2 py-1 pt-[.4em] font-bold">
 						LOGIN
 					</div>
@@ -211,9 +211,8 @@ export default function Navbar() {
 				<div
 					id="nav-content"
 					role="menu"
-					className={`lg:duration-400 absolute right-0 top-0  h-screen w-full flex-col rounded-[0em] bg-black shadow-lg transition-transform duration-0 ease-in-out lg:mt-0  lg:h-[100vh] lg:w-full lg:rounded-[1em] lg:bg-black/80 lg:py-16 ${
-						isNavOpen ? "translate-x-0 " : "translate-x-full "
-					} flex h-screen w-full flex-col justify-start p-3`}
+					className={`lg:duration-400 absolute right-0 top-0  h-screen w-full flex-col rounded-[0em] bg-black shadow-lg transition-transform duration-0 ease-in-out lg:mt-0  lg:h-[100vh] lg:w-full lg:rounded-[1em] lg:bg-black/80 lg:py-16 ${isNavOpen ? "translate-x-0 " : "translate-x-full "
+						} flex h-screen w-full flex-col justify-start p-3`}
 				>
 					<div className="h-full overflow-y-auto lg:flex lg:justify-between">
 						<div className="mb-2 block w-full lg:order-2 lg:mb-0 lg:h-full lg:w-2/3">
