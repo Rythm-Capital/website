@@ -1,9 +1,9 @@
 ---
-import { MainPost } from '../components/MainPost';
+import  MainPost  from '../components/MainPost';
 import Navbar from '../components/Navbar';
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
-import Footer from '../components/Footer.astro';
+
 
 const posts = await sanityClient.fetch(
   `*[_type == "posts" ] | order(publishedAt desc)
@@ -32,6 +32,6 @@ const posts = await sanityClient.fetch(
 <Layout title='Rthmn.'>
   <Navbar client:load />
   <div>
-    {posts.length ? posts.map((post: any) => <MainPost post={post} />) : null}
+    <MainPost posts={posts} />
   </div>
 </Layout>
