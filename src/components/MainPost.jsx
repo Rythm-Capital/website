@@ -23,19 +23,18 @@ const SubHeading = ({ heading, className }) => {
 	return <h2 className={className}>{displayHeading}</h2>;
 };
 
-export const MainPostItem = ({ block, slug }) => {
+const MainPostItem = ({ block, slug }) => {
 	const { publicationDate } = block;
-
 	const imageUrl = block.imageRef?.imageUrl;
 
 	return (
-		<div className="group flex h-auto flex-col border-gray-600/50 p-1 transition duration-300 ease-in-out">
+		<div className="group flex h-auto flex-col border-gray-600/50 p-1 transition duration-300 ease-in-out w-11/12 lg:w-1/2">
 			<div className="overflow-hidden rounded-[.5em]">
 				<div className="transform transition duration-300 ease-in-out group-hover:scale-105 ">
 					<img
 						src={imageUrl}
 						alt={"this"}
-						className=" h-full  w-full object-contain object-cover  lg:h-[25vw] rounded-[.5em]"
+						className="h-full w-full object-contain object-cover lg:h-[25vw] rounded-[.5em]"
 					/>
 					{block.image && (
 						<div className="group mb-2 flex h-80 w-full overflow-hidden lg:h-96">
@@ -45,7 +44,7 @@ export const MainPostItem = ({ block, slug }) => {
 								width={1000}
 								height={800}
 								format="webp"
-								class="h-full w-full transform rounded-md object-cover transition-transform duration-300 group-hover:scale-105 "
+								className="h-full w-full transform rounded-md object-cover transition-transform duration-300 group-hover:scale-105"
 							/>
 						</div>
 					)}
@@ -58,26 +57,28 @@ export const MainPostItem = ({ block, slug }) => {
 			<a href={`/posts/${slug?.current}`}>
 				<Heading
 					heading={block.heading}
-					className="heading-text cursor-pointer bg-clip-text p-1 text-3xl font-semibold   leading-[1.25em] text-transparent lg:text-4xl"
+					className="heading-text cursor-pointer bg-clip-text p-1 text-3xl font-semibold leading-[1.25em] text-transparent lg:text-4xl"
 				/>
 			</a>
-
 			<SubHeading
 				heading={block.subheading}
-				className="primary-text bg-clip-text p-1 text-lg   leading-[1.5em] text-transparent"
+				className="primary-text bg-clip-text p-1 text-lg leading-[1.5em] text-transparent"
 			/>
 		</div>
 	);
 };
-
-export const MainPost = ({ post }) => {
-	if (!post || !post.block) {
-		return <div>No post available</div>;
+const MainPost = ({ posts }) => {
+	if (!posts || posts.length === 0) {
+		return <div>No posts available</div>;
 	}
 
+	const post = posts[0];
+
 	return (
-		<div className="my-4 flex w-full px-0 lg:my-0 lg:w-1/2 lg:px-4">
+		<div className="my-4 flex w-full justify-center items-center">
 			<MainPostItem block={post.block[0]} slug={post.slug} />
 		</div>
 	);
 };
+
+export default MainPost
