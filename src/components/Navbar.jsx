@@ -44,7 +44,7 @@ export default function Navbar() {
 						<path
 							d="M27.512 73.5372L27.512 28.512C27.512 27.9597 27.9597 27.512 28.512 27.512L70.4597 27.512C71.0229 27.512 71.475 27.9769 71.4593 28.54L70.8613 49.9176C70.8462 50.4588 70.4031 50.8896 69.8617 50.8896L50.7968 50.8896C49.891 50.8896 49.4519 51.9975 50.1117 52.618L92.25 92.25M92.25 92.25L48.2739 92.25L7.75002 92.25C7.19773 92.25 6.75002 91.8023 6.75002 91.25L6.75 7.75C6.75 7.19771 7.19772 6.75 7.75 6.75L91.25 6.75003C91.8023 6.75003 92.25 7.19775 92.25 7.75003L92.25 92.25Z"
 							stroke="url(#paint0_linear_1208_27417)"
-							strokeWidth="9"
+							strokeWidth="8"
 						/>
 					</g>
 					<defs>
@@ -56,8 +56,8 @@ export default function Navbar() {
 							y2="92.25"
 							gradientUnits="userSpaceOnUse"
 						>
-							<stop stopColor="#EAEDF3" />
-							<stop offset="1" stopColor="#CBD3E7" />
+							<stop stopColor="#ffffff" offset="0.5" />
+							<stop offset="1" stopColor="#787c80" />
 						</linearGradient>
 						<clipPath id="clip0_1208_27417">
 							<rect width="100" height="100" fill="white" />
@@ -189,12 +189,40 @@ export default function Navbar() {
 					<a href="/"> Company </a>
 				</div>
 				<div className="flex flex-row gap-2  md:gap-4 ">
-					<div className="primary-text  border border-gray-500 px-2 py-1 pt-[.4em] font-bold">
-						LOGIN
-					</div>
-					<div className="rounded-full border border-gray-500 bg-gradient-to-r from-[#7886FF] to-[#CBFFFF] px-3 py-1 font-bold  text-black text-white md:block">
-						SIGNUP
-					</div>
+					<a href="https://app.rthmn.com" className="bg-[#181818] text-gray-200  rounded-full text-[.8rem] pl-4 pr-2 py-2 flex items-center hover:bg-[#222]">
+						app.rthmn.com
+						<svg
+							width="12"
+							height="12"
+							viewBox="0 0 20 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							className="ml-2"
+						>
+							<path
+								d="M8 4L16 12L8 20"
+								stroke="url(#paint0_linear_1208_27417)"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+							<defs>
+								<linearGradient
+									id="paint0_linear_1208_27417"
+									x1="8"
+									y1="4"
+									x2="16"
+									y2="20"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stopColor="#ffffffa0" offset="0.6" />
+									<stop offset="1" stopColor="#787c80" />
+								</linearGradient>
+							</defs>
+						</svg>
+					</a>
+
+
 				</div>
 				{/* <div className="relative block pr-6 lg:hidden ">
 					<button

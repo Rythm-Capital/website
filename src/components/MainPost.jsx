@@ -4,10 +4,10 @@ import { Image } from "astro:assets";
 const FormattedDate = ({ date, className }) => {
 	const formattedDate = date
 		? new Date(date).toLocaleDateString("en-US", {
-				year: "numeric",
-				month: "short",
-				day: "numeric",
-		  })
+			year: "numeric",
+			month: "short",
+			day: "numeric",
+		})
 		: "Date not available";
 
 	return <span className={className}>{formattedDate}</span>;
@@ -53,18 +53,18 @@ export const MainPostItem = ({ block, slug }) => {
 			</div>
 			<FormattedDate
 				date={publicationDate}
-				className="h-auto w-full bg-gradient-to-r from-blue-100/50 to-blue-100/50 bg-clip-text p-1 pt-3 text-xs font-bold uppercase tracking-widest text-transparent"
+				className="h-auto w-full primary-text bg-clip-text p-1 pt-3 text-xs font-bold uppercase tracking-widest text-transparent"
 			/>
 			<a href={`/posts/${slug?.current}`}>
 				<Heading
 					heading={block.heading}
-					className=" cursor-pointer bg-gradient-to-r from-blue-100/100 to-blue-100/90 bg-clip-text p-1 text-3xl font-semibold   leading-[1.25em] text-transparent lg:text-4xl"
+					className="heading-text cursor-pointer bg-clip-text p-1 text-3xl font-semibold   leading-[1.25em] text-transparent lg:text-4xl"
 				/>
 			</a>
 
 			<SubHeading
 				heading={block.subheading}
-				className="bg-gradient-to-r from-blue-100/50 to-blue-100/50  bg-clip-text p-1 text-lg   leading-[1.5em] text-transparent"
+				className="primary-text bg-clip-text p-1 text-lg   leading-[1.5em] text-transparent"
 			/>
 		</div>
 	);
